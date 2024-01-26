@@ -13,6 +13,7 @@ import { title } from "process";
 import { EventModal } from "./EventModal";
 import { Button } from "../ui/button";
 import { DataContext } from "@/app/context/Providers";
+import { set } from "date-fns";
 
 export default function Calendar(): JSX.Element {
     const { transformedEvents } = useContext(DataContext);
@@ -36,7 +37,11 @@ export default function Calendar(): JSX.Element {
     };
 
     const handleCreateAppointment = (): void => {
-        handleDateClick;
+        setCurrentEvent({
+            start: new Date(),
+            id: new Date().getTime().toString(),
+        });
+        setShowEventModal(true);
     };
 
     return (
